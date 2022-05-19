@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<div>
+    <h1>Inventory</h1>
+    <h3><button><a href="{% url 'core:add' %}">Add Item</a></button></h3>
+    <ul>
+    {% for item in object_list %}
+        <li>
+            <h2>{{ item.name }}</h2>
+            <div style="padding-bottom: 0.5rem">Qty: {{ item.quantity }}</div>
+            <button><a href={% url 'core:single' item.id %}>More</a></button>
+            <button><a href="{% url 'core:edit' item.id %}">Edit</a></button>
+            <button><a href="{% url 'core:delete' item.id %}">Remove Item</a></button>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
